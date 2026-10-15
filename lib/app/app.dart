@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 
 import '../catalog/screens/home_screen.dart';
+import 'app_theme.dart';
 
 class MiniKatalogApp extends StatelessWidget {
   const MiniKatalogApp({super.key});
@@ -9,7 +10,8 @@ class MiniKatalogApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return MaterialApp(
       title: 'Mini Katalog',
-      theme: ThemeData(colorSchemeSeed: Colors.blue),
+      debugShowCheckedModeBanner: false,
+      theme: AppTheme.light,
       home: const HomeScreen(),
     );
   }
