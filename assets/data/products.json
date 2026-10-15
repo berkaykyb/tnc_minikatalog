@@ -1,0 +1,122 @@
+[
+  {
+    "id": 18,
+    "name": "AirPods Max",
+    "category": "Ses",
+    "shortDescription": "Kendi ritmine dön.",
+    "description": "Yoğun bir günün arasında sevdiğin müziğe yer aç. Kulak üstü tasarımıyla çalışma masandan dinlenme köşene eşlik eder.",
+    "price": 549,
+    "currency": "USD",
+    "imageAsset": "assets/images/products/airpods_max.png",
+    "specifications": {
+      "Tasarım": "Kulak üstü",
+      "Bağlantı": "Kablosuz",
+      "Kullanım": "Müzik ve çalışma"
+    }
+  },
+  {
+    "id": 20,
+    "name": "HomePod Mini",
+    "category": "Ses",
+    "shortDescription": "Küçük bir ses molası.",
+    "description": "Masanın bir köşesine sığan, müzik için ayrılmış küçük bir alan. Günlük rutinine ve kısa molalarına renk katar.",
+    "price": 99,
+    "currency": "USD",
+    "imageAsset": "assets/images/products/homepod_mini.png",
+    "specifications": {
+      "Tasarım": "Kompakt",
+      "Bağlantı": "Kablosuz",
+      "Kullanım": "Masaüstü"
+    }
+  },
+  {
+    "id": 8,
+    "name": "MacBook Air 15",
+    "category": "Dizüstü",
+    "shortDescription": "Fikirlerine biraz daha yer.",
+    "description": "Notlarını, taslaklarını ve günlük işlerini aynı yerde topla. Geniş ekranı ve ince gövdesiyle hareketli bir çalışma gününe uyum sağlar.",
+    "price": 1299,
+    "currency": "USD",
+    "imageAsset": "assets/images/products/macbook_air.png",
+    "specifications": {
+      "Ekran sınıfı": "15 inç",
+      "Tasarım": "İnce gövde",
+      "Kullanım": "Taşınabilir"
+    }
+  },
+  {
+    "id": 17,
+    "name": "AirPods Pro",
+    "category": "Ses",
+    "shortDescription": "Günün sesini sen seç.",
+    "description": "Küçük bir kutuda yanında taşıyabileceğin dinleme alanı. Masada, yürüyüşte ve günün kısa aralarında kullanmak için.",
+    "price": 249,
+    "currency": "USD",
+    "imageAsset": "assets/images/products/airpods.png",
+    "specifications": {
+      "Tasarım": "Kulak içi",
+      "Bağlantı": "Kablosuz",
+      "Taşıma": "Şarj kutusu"
+    }
+  },
+  {
+    "id": 19,
+    "name": "HomePod",
+    "category": "Ses",
+    "shortDescription": "Odanın yeni ritmi.",
+    "description": "Çalışma alanında müziğe kalıcı bir yer ayır. Sade görünümüyle kitapların, notların ve günlük eşyaların arasına yerleşir.",
+    "price": 299,
+    "currency": "USD",
+    "imageAsset": "assets/images/products/homepod.png",
+    "specifications": {
+      "Tür": "Hoparlör",
+      "Bağlantı": "Kablosuz",
+      "Kullanım": "İç mekan"
+    }
+  },
+  {
+    "id": 7,
+    "name": "MacBook Pro 14",
+    "category": "Dizüstü",
+    "shortDescription": "Üretmeye ayrılmış bir alan.",
+    "description": "Kod, çizim ve üzerinde çalıştığın projeler için bir çalışma arkadaşı. Masanı değiştirdiğinde işlerini de yanında götür.",
+    "price": 1599,
+    "currency": "USD",
+    "imageAsset": "assets/images/products/macbook_silver.png",
+    "specifications": {
+      "Ekran sınıfı": "14 inç",
+      "Tür": "Dizüstü bilgisayar",
+      "Kullanım": "Taşınabilir"
+    }
+  },
+  {
+    "id": 10,
+    "name": "iMac",
+    "category": "Masaüstü",
+    "shortDescription": "Masanda yeni bir sayfa.",
+    "description": "İşlerine ve fikirlerine masanın merkezinde yer aç. Ekranı ve bilgisayarı bir araya getiren sade bir çalışma düzeni.",
+    "price": 1299,
+    "currency": "USD",
+    "imageAsset": "assets/images/products/imac.png",
+    "specifications": {
+      "Tasarım": "Hepsi bir arada",
+      "Tür": "Masaüstü bilgisayar",
+      "Kullanım": "Sabit çalışma alanı"
+    }
+  },
+  {
+    "id": 12,
+    "name": "iPad Air",
+    "category": "Tablet",
+    "shortDescription": "Bir notla başlayan fikirler.",
+    "description": "Okuduklarını, izlediklerini ve günlük notlarını yanında tut. Çalışma alanını masanın dışına taşımak istediğin anlar için.",
+    "price": 599,
+    "currency": "USD",
+    "imageAsset": "assets/images/products/ipad_air.png",
+    "specifications": {
+      "Etkileşim": "Dokunmatik",
+      "Tür": "Tablet",
+      "Kullanım": "Taşınabilir"
+    }
+  }
+]
