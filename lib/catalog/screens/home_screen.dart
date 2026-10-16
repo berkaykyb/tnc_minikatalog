@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 
 import '../../app/app_theme.dart';
+import '../../app/app_routes.dart';
 import '../data/product_repository.dart';
 import '../models/product.dart';
 import '../widgets/catalog_banner.dart';
@@ -158,6 +159,17 @@ class _CatalogPreview extends StatelessWidget {
         const SizedBox(height: 12),
         for (final product in products.take(3))
           _ProductPreview(product: product),
+        const SizedBox(height: 16),
+        SizedBox(
+          width: double.infinity,
+          child: FilledButton.icon(
+            onPressed: () =>
+                Navigator.of(context)
+                    .pushNamed(AppRoutes.catalog, arguments: products),
+            icon: const Icon(Icons.grid_view_rounded),
+            label: const Text('Tüm ürünleri gör'),
+          ),
+        ),
       ],
     );
   }
@@ -172,41 +184,47 @@ class _ProductPreview extends StatelessWidget {
   Widget build(BuildContext context) {
     final textTheme = Theme.of(context).textTheme;
 
-    return Padding(
-      padding: const EdgeInsets.symmetric(vertical: 12),
-      child: Row(
-        children: [
-          ClipRRect(
-            borderRadius: BorderRadius.circular(14),
-            child: Image.asset(
-              product.imageAsset,
-              width: 76,
-              height: 76,
-              cacheWidth: 228,
-              fit: BoxFit.cover,
-              excludeFromSemantics: true,
-              errorBuilder: (context, error, stackTrace) => const SizedBox(
+    return InkWell(
+      onTap: () =>
+          Navigator.of(context)
+              .pushNamed(AppRoutes.productDetail, arguments: product),
+      borderRadius: BorderRadius.circular(14),
+      child: Padding(
+        padding: const EdgeInsets.symmetric(vertical: 12),
+        child: Row(
+          children: [
+            ClipRRect(
+              borderRadius: BorderRadius.circular(14),
+              child: Image.asset(
+                product.imageAsset,
                 width: 76,
                 height: 76,
-                child: ColoredBox(
-                  color: AppTheme.border,
-                  child: Icon(Icons.image_not_supported_outlined),
+                cacheWidth: 228,
+                fit: BoxFit.cover,
+                excludeFromSemantics: true,
+                errorBuilder: (context, error, stackTrace) => const SizedBox(
+                  width: 76,
+                  height: 76,
+                  child: ColoredBox(
+                    color: AppTheme.border,
+                    child: Icon(Icons.image_not_supported_outlined),
+                  ),
                 ),
               ),
             ),
-          ),
-          const SizedBox(width: 16),
-          Expanded(
-            child: Column(
-              crossAxisAlignment: CrossAxisAlignment.start,
-              children: [
-                Text(product.name, style: textTheme.titleMedium),
-                const SizedBox(height: 4),
-                Text(product.shortDescription, style: textTheme.bodyMedium),
-              ],
+            const SizedBox(width: 16),
+            Expanded(
+              child: Column(
+                crossAxisAlignment: CrossAxisAlignment.start,
+                children: [
+                  Text(product.name, style: textTheme.titleMedium),
+                  const SizedBox(height: 4),
+                  Text(product.shortDescription, style: textTheme.bodyMedium),
+                ],
+              ),
             ),
-          ),
-        ],
+          ],
+        ),
       ),
     );
   }
