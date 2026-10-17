@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 
 import '../../app/app_theme.dart';
+import '../../cart/cart_scope.dart';
 import '../../shared/widgets/price_text.dart';
 import '../models/product.dart';
 import '../widgets/product_image.dart';
@@ -13,9 +14,19 @@ class ProductDetailScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final textTheme = Theme.of(context).textTheme;
+    final cart = CartScope.maybeOf(context);
 
     return Scaffold(
-      appBar: AppBar(title: const Text('Ürün detayı')),
+      appBar: AppBar(
+        title: const Text('Ürün detayı'),
+        actions: [
+          if (cart != null)
+            Padding(
+              padding: const EdgeInsets.only(right: 24),
+              child: Text('Sepet: ${cart.quantity}'),
+            ),
+        ],
+      ),
       body: Align(
         alignment: Alignment.topCenter,
         child: ConstrainedBox(
@@ -57,6 +68,27 @@ class ProductDetailScreen extends StatelessWidget {
                     color: AppTheme.accent,
                   ),
                 ),
+                if (cart != null) ...[
+                  const SizedBox(height: 24),
+                  SizedBox(
+                    width: double.infinity,
+                    child: FilledButton.icon(
+                      onPressed: () {
+                        cart.onAdd(product);
+                        ScaffoldMessenger.of(context)
+                          ..hideCurrentSnackBar()
+                          ..showSnackBar(
+                            SnackBar(
+                              content: Text('${product.name} sepete eklendi.'),
+                              duration: const Duration(seconds: 2),
+                            ),
+                          );
+                      },
+                      icon: const Icon(Icons.add_shopping_cart_rounded),
+                      label: const Text('Sepete ekle'),
+                    ),
+                  ),
+                ],
                 const SizedBox(height: AppTheme.sectionGap),
                 Text('Ürün hakkında', style: textTheme.titleLarge),
                 const SizedBox(height: 12),
