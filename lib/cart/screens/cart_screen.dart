@@ -25,7 +25,7 @@ class _CartScreenState extends State<CartScreen> {
     setState(() => _openingCatalog = true);
     try {
       final products = await widget.loadProducts();
-      if (!mounted) return;
+      if (!mounted || ModalRoute.of(context)?.isCurrent != true) return;
       final navigator = Navigator.of(context);
       var foundCatalog = false;
       navigator.popUntil((route) {
@@ -36,7 +36,7 @@ class _CartScreenState extends State<CartScreen> {
         navigator.pushNamed(AppRoutes.catalog, arguments: products);
       }
     } catch (_) {
-      if (!mounted) return;
+      if (!mounted || ModalRoute.of(context)?.isCurrent != true) return;
       ScaffoldMessenger.of(context).showSnackBar(
         const SnackBar(
           content: Text('Katalog yüklenemedi. Yeniden deneyebilirsin.'),
