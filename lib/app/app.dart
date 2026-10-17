@@ -19,6 +19,18 @@ class MiniKatalogApp extends StatefulWidget {
 
 class _MiniKatalogAppState extends State<MiniKatalogApp> {
   List<CartItem> _items = const [];
+  late final _repository = widget.repository ?? ProductRepository();
+  Future<List<Product>>? _catalog;
+
+  Future<List<Product>> _loadProducts() {
+    return _catalog ??= _repository.loadProducts().then(
+      (products) => products,
+      onError: (Object error, StackTrace stack) {
+        _catalog = null;
+        Error.throwWithStackTrace(error, stack);
+      },
+    );
+  }
 
   void _add(Product product) {
     setState(() {
@@ -66,8 +78,9 @@ class _MiniKatalogAppState extends State<MiniKatalogApp> {
         title: 'Mini Katalog',
         debugShowCheckedModeBanner: false,
         theme: AppTheme.light,
-        home: HomeScreen(repository: widget.repository),
-        onGenerateRoute: AppRoutes.generate,
+        home: HomeScreen(loadProducts: _loadProducts),
+        onGenerateRoute: (settings) =>
+            AppRoutes.generate(settings, loadProducts: _loadProducts),
       ),
     );
   }

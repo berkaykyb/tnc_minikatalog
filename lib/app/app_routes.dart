@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 
+import '../cart/screens/cart_screen.dart';
 import '../catalog/models/product.dart';
 import '../catalog/screens/product_detail_screen.dart';
 import '../catalog/screens/product_list_screen.dart';
@@ -8,9 +9,19 @@ import '../shared/widgets/empty_state.dart';
 abstract final class AppRoutes {
   static const catalog = '/catalog';
   static const productDetail = '/product';
+  static const cart = '/cart';
 
-  static Route<void> generate(RouteSettings settings) {
+  static Route<void> generate(
+    RouteSettings settings, {
+    Future<List<Product>> Function()? loadProducts,
+  }) {
     final arguments = settings.arguments;
+    if (settings.name == cart && loadProducts != null) {
+      return MaterialPageRoute<void>(
+        settings: settings,
+        builder: (context) => CartScreen(loadProducts: loadProducts),
+      );
+    }
     if (settings.name == catalog && arguments is List<Product>) {
       return MaterialPageRoute<void>(
         settings: settings,

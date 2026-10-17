@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 
 import '../../app/app_theme.dart';
 import '../../cart/cart_scope.dart';
+import '../../cart/widgets/cart_button.dart';
 import '../../shared/widgets/price_text.dart';
 import '../models/product.dart';
 import '../widgets/product_image.dart';
@@ -19,13 +20,7 @@ class ProductDetailScreen extends StatelessWidget {
     return Scaffold(
       appBar: AppBar(
         title: const Text('Ürün detayı'),
-        actions: [
-          if (cart != null)
-            Padding(
-              padding: const EdgeInsets.only(right: 24),
-              child: Text('Sepet: ${cart.quantity}'),
-            ),
-        ],
+        actions: const [CartButton(), SizedBox(width: 12)],
       ),
       body: Align(
         alignment: Alignment.topCenter,

@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 
 import '../../app/app_theme.dart';
+import '../../cart/widgets/cart_button.dart';
 import '../../shared/widgets/empty_state.dart';
 import '../catalog_filter.dart';
 import '../models/product.dart';
@@ -71,7 +72,10 @@ class _ProductListScreenState extends State<ProductListScreen> {
         .toSet();
 
     return Scaffold(
-      appBar: AppBar(title: const Text('Katalog')),
+      appBar: AppBar(
+        title: const Text('Katalog'),
+        actions: const [CartButton(), SizedBox(width: 12)],
+      ),
       body: Align(
         alignment: Alignment.topCenter,
         child: ConstrainedBox(

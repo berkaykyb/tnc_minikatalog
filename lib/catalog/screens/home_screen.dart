@@ -2,14 +2,17 @@ import 'package:flutter/material.dart';
 
 import '../../app/app_theme.dart';
 import '../../app/app_routes.dart';
+import '../../cart/cart_scope.dart';
+import '../../cart/widgets/cart_button.dart';
 import '../data/product_repository.dart';
 import '../models/product.dart';
 import '../widgets/catalog_banner.dart';
 
 class HomeScreen extends StatefulWidget {
-  const HomeScreen({super.key, this.repository});
+  const HomeScreen({super.key, this.repository, this.loadProducts});
 
   final ProductRepository? repository;
+  final Future<List<Product>> Function()? loadProducts;
 
   @override
   State<HomeScreen> createState() => _HomeScreenState();
@@ -23,11 +26,14 @@ class _HomeScreenState extends State<HomeScreen> {
   void initState() {
     super.initState();
     _repository = widget.repository ?? ProductRepository();
-    _products = _repository.loadProducts();
+    _products = _loadProducts();
   }
 
+  Future<List<Product>> _loadProducts() =>
+      widget.loadProducts?.call() ?? _repository.loadProducts();
+
   void _reload() {
-    final request = _repository.loadProducts();
+    final request = _loadProducts();
     setState(() {
       _products = request;
     });
@@ -121,14 +127,17 @@ class _BrandHeader extends StatelessWidget {
           ),
         ),
         const SizedBox(width: 12),
-        Flexible(
-          child: Text(
-            'SEÇKİ / 01',
-            textAlign: TextAlign.right,
-            style: Theme.of(context).textTheme.labelSmall
-                ?.copyWith(color: AppTheme.accent, letterSpacing: 1),
+        if (CartScope.maybeOf(context) != null)
+          const CartButton()
+        else
+          Flexible(
+            child: Text(
+              'SEÇKİ / 01',
+              textAlign: TextAlign.right,
+              style: Theme.of(context).textTheme.labelSmall
+                  ?.copyWith(color: AppTheme.accent, letterSpacing: 1),
+            ),
           ),
-        ),
       ],
     );
   }
