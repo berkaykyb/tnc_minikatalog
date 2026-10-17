@@ -18,10 +18,14 @@ class CartButton extends StatelessWidget {
         ScaffoldMessenger.of(context).hideCurrentSnackBar();
         Navigator.of(context).pushNamed(AppRoutes.cart);
       },
-      icon: Badge.count(
-        count: cart.quantity,
-        isLabelVisible: cart.quantity > 0,
-        child: const Icon(Icons.shopping_bag_outlined),
+      icon: Semantics(
+        label: 'Sepet (${cart.quantity} ürün)',
+        excludeSemantics: true,
+        child: Badge.count(
+          count: cart.quantity,
+          isLabelVisible: cart.quantity > 0,
+          child: const Icon(Icons.shopping_bag_outlined),
+        ),
       ),
     );
   }
