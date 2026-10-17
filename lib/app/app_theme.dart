@@ -1,21 +1,27 @@
 import 'package:flutter/material.dart';
 
 abstract final class AppTheme {
-  static const background = Color(0xFFF7F6F2);
-  static const ink = Color(0xFF20252B);
-  static const muted = Color(0xFF696F76);
-  static const accent = Color(0xFF315CDB);
-  static const border = Color(0xFFE4E3DD);
+  static const background = Color(0xFFF5F2EB);
+  static const ink = Color(0xFF292C25);
+  static const muted = Color(0xFF686C60);
+  static const accent = Color(0xFF55633E);
+  static const border = Color(0xFFDEDED2);
 
   static const pagePadding = 24.0;
   static const sectionGap = 32.0;
   static const cornerRadius = 20.0;
 
   static ThemeData get light {
-    final scheme = ColorScheme.fromSeed(
-      seedColor: accent,
-      surface: background,
-    ).copyWith(onSurface: ink, primary: accent, outlineVariant: border);
+    final scheme = ColorScheme.fromSeed(seedColor: accent, surface: background)
+        .copyWith(
+          onSurface: ink,
+          onSurfaceVariant: muted,
+          primary: accent,
+          onPrimary: Colors.white,
+          secondary: const Color(0xFF666B50),
+          tertiary: const Color(0xFF806047),
+          outlineVariant: border,
+        );
     final base = ThemeData(useMaterial3: true, colorScheme: scheme);
     final roundedShape = RoundedRectangleBorder(
       borderRadius: BorderRadius.circular(cornerRadius),
